@@ -29,7 +29,6 @@ export function SwapManage() {
     content && content.dataType == "moveObject" && content.fields
       ? content
       : { fields: { balance1: 0, balance2: 0 } };
-  console.info(typeof poolField);
   const [swapAmount, setSwapAmount] = useState(0);
   return (
     <Box grow={"1"} shrink={"1"}>
@@ -41,10 +40,10 @@ export function SwapManage() {
           <Box mb="3">
             <Box>
               <Text as="div" weight="bold">
-                Pool Balance Of Coin1 : {poolField?.balance1 / 1e6}
+                Pool Balance Of Coin1 : {(poolField as any)?.balance1 / 1e6}
               </Text>
               <Text as="div" weight="bold">
-                Pool Balance Of Coin2: {poolField?.balance2 / 1e6}
+                Pool Balance Of Coin2: {(poolField as any)?.balance2 / 1e6}
               </Text>
             </Box>
           </Box>

@@ -10,4 +10,8 @@ export const COIN_CAP_ID2 =
   "0xdcb967fd923961589ea3397acbc123068ebca1247b65f3e82992b1c144d245f7";
 export const SWAP_ID =
   "0x13a86127e1e5c792a9561ad125e0da36f9079563fad9b44156da677b6fbc6600";
+export const FAUCET_PACKAGE_ID =
+  "0x694c56f1d67b776d096eccee0f2c3c5b059b8dc7e130cf5a16a93a137705dece";
+export const FAUCET_ID =
+  "0x305925281a30ca8394cabb37c582a9c89cdb80f210e925e26a8747c4cb8a5474";
 //export const COIN_MOD = "0x2::sui::SUI";

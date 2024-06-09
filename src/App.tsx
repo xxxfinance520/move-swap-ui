@@ -5,7 +5,7 @@ import { Box, Callout, Container, Flex, Grid, Heading } from "@radix-ui/themes";
 import { CoinSesh } from "./containers/Coin/CoinSesh";
 import { SwapSesh } from "./containers/Swap/SwapSesh";
 import { SwapManage } from "./containers/Swap/SwapManage";
-import { SWAP_ID, PACKAGE_ID, COIN_PACKAGE_ID } from "./constants";
+import { SWAP_ID, PACKAGE_ID, COIN_PACKAGE_ID, FAUCET_ID } from "./constants";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 function App() {
@@ -41,6 +41,9 @@ function App() {
         </Heading>
         <Heading size="4" m={"2"}>
           SWAP ID: {SWAP_ID}
+        </Heading>
+        <Heading size="4" m={"2"}>
+          FAUCET ID: {FAUCET_ID}
         </Heading>
 
         <Callout.Root mb="2">

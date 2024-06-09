@@ -20,7 +20,7 @@ export function useFetchCoinBalance(coinMod: string) {
       owner: account.address,
       coinType: coinMod,
     },
-    { queryKey: ["Coins"] },
+    { queryKey: ["Coins" + coinMod] },
   );
 
   return {
@@ -34,22 +34,45 @@ export function useFetchCoinBalance(coinMod: string) {
 
 export function useFetchCoinBalanceByAccount(coinMod: string, account: string) {
   if (!account) {
-    return { data: {} };
+    return { data: [] };
   }
-
   // Fetch CounterNFT owned by current connected wallet
   // Only fetch the 1st one
   const { data, isLoading, isError, error, refetch } = useSuiClientQuery(
-    "getBalance",
+    "getAllCoins",
     {
       owner: account,
-      coinType: coinMod,
+      //coinType: coinMod,
     },
-    { queryKey: ["Balances"] },
+    { queryKey: ["AccountCoins" + coinMod + account] },
   );
 
   return {
-    data: data && data.totalBalance ? data : { totalBalance: 0 },
+    data: data && data.data.length > 0 ? data?.data : [],
+    isLoading,
+    isError,
+    error,
+    refetch,
+  };
+}
+
+export function useFetchGetOwnedObjects(coinMod: string, account: string) {
+  // Fetch CounterNFT owned by current connected wallet
+  // Only fetch the 1st one
+  const { data, isLoading, isError, error, refetch } = useSuiClientQuery(
+    "getOwnedObjects",
+    {
+      owner: account,
+      //coinType: coinMod,
+      options: {
+        showType: true,
+      },
+    },
+    { queryKey: ["OwnedObjects" + coinMod + account] },
+  );
+
+  return {
+    data: data && data.data ? data?.data : [],
     isLoading,
     isError,
     error,
@@ -63,6 +86,7 @@ export type CoinStructResult = {
   type?: "object" | undefined;
   value?: any;
 } | void;
+
 export function mergeCoins(
   txb: TransactionBlock,
   data: CoinStruct[],
@@ -97,7 +121,7 @@ export function useFetchGetObject(id: string) {
         showContent: true,
       },
     },
-    { queryKey: ["Object"] },
+    { queryKey: [id] },
   );
 
   return {
