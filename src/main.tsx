@@ -1,4 +1,5 @@
 import React from "react";
+
 import ReactDOM from "react-dom/client";
 import "@mysten/dapp-kit/dist/index.css";
 import "@radix-ui/themes/styles.css";
@@ -12,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 import App from "./App.tsx";
 import { HouseKeypairProvider } from "./containers/House/HouseKeypairContext.tsx";
 import { HouseDataProvider } from "./containers/House/HouseDataContext.tsx";
-//const client = new SuiClient({ url: getFullnodeUrl("testnet") });
+import { BrowserRouter } from 'react-router-dom'
 const queryClient = new QueryClient();
 const networks = {
   localnet: { url: getFullnodeUrl("localnet") },
@@ -20,11 +21,13 @@ const networks = {
   testnet: { url: getFullnodeUrl("testnet") },
   mainnet: { url: getFullnodeUrl("mainnet") },
 };
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+     <BrowserRouter>
     <Theme appearance="light">
       <QueryClientProvider client={queryClient}>
-        <SuiClientProvider networks={networks} defaultNetwork="testnet">
+        <SuiClientProvider networks={networks} defaultNetwork="devnet">
           <WalletProvider autoConnect>
             <ToastContainer />
             <HouseKeypairProvider>
@@ -36,5 +39,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </SuiClientProvider>
       </QueryClientProvider>
     </Theme>
+    </BrowserRouter>
   </React.StrictMode>,
 );

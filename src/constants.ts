@@ -14,4 +14,4 @@ export const FAUCET_PACKAGE_ID =
   "0x694c56f1d67b776d096eccee0f2c3c5b059b8dc7e130cf5a16a93a137705dece";
 export const FAUCET_ID =
   "0x305925281a30ca8394cabb37c582a9c89cdb80f210e925e26a8747c4cb8a5474";
-//export const COIN_MOD = "0x2::sui::SUI";
+export const MOD_Poseidon = "0x2::sui::poseidon";
